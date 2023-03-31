@@ -1,6 +1,6 @@
 // @ts-check
 
-const satisfiesWorker = require('./lib').satisfies;
+const satisfiesWorker = require('./lib.js').satisfies;
 
 /**
  * @type {import("./lib").satisfies}
