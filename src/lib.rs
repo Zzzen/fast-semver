@@ -3,17 +3,15 @@
 #[macro_use]
 extern crate napi_derive;
 
-use semver::{Version, VersionReq, Error};
+#[cfg(not(all(target_os = "linux", target_env = "musl", target_arch = "aarch64")))]
+#[global_allocator]
+static ALLOC: mimalloc_rust::GlobalMiMalloc = mimalloc_rust::GlobalMiMalloc;
+
+use semver::{Version, VersionReq};
 
 #[napi]
-fn satisfies(version: String, req: String) -> bool {
-  match satisfies_worker(version, req) {
-      Ok(true) => true,
-      _ => false,
-  }
-}
-
-fn satisfies_worker(version: String, req: String) -> Result<bool, Error> {
-  let req = VersionReq::parse(req. as_str())?;
-  Ok(req.matches(&Version::parse(version.as_str())?))
+pub fn satisfies(version: String, req: String) -> bool {
+  VersionReq::parse(req.as_str())
+    .and_then(|req| Version::parse(version.as_str()).map(|version| req.matches(&version)))
+    .unwrap_or(false)
 }
