@@ -1,5 +1,7 @@
 # fast-semver
 
+⚠️ Do not use it in production, because it uses a different flavor of semver than npm.
+
 a fast semver parser and comparator based on [rust semver](https://github.com/dtolnay/semver).
 
 ## Usage
