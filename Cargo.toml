@@ -9,7 +9,7 @@ crate-type = ["cdylib"]
 [dependencies]
 napi = { version = "2", default-features = false, features = ["napi3"] }
 napi-derive = "2"
-semver = "1"
+semver = { git = "https://github.com/Zzzen/semver" }
 
 [target.'cfg(not(target_os = "linux"))'.dependencies]
 mimalloc-rust = "0.2"

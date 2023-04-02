@@ -11,16 +11,16 @@ async function run() {
         satisfiesRust('1.0.0', '^1.0.0')
         satisfiesRust('1.0.0', '*')
         satisfiesRust('1.0.0', '^2.0.0')
-        satisfiesRust('1.0.3', '>=1.0.3, <3.0.0')
-        satisfiesRust('3.0.6', '>=1.0.3, <3.0.0')
+        satisfiesRust('1.0.3', '^1.0.3 || ^2.0.0')
+        satisfiesRust('3.0.6', '^1.0.3 || ^2.0.0')
     }),
     b.add('JavaScript ', () => {
         satisfiesJs('1.0.0', '1.0.0')
         satisfiesJs('1.0.0', '^1.0.0')
         satisfiesJs('1.0.0', '*')
         satisfiesJs('1.0.0', '^2.0.0')
-        satisfiesJs('1.0.3', '1.0.3||^2.0.0')
-        satisfiesJs('3.0.6', '1.0.3||^2.0.0')
+        satisfiesJs('1.0.3', '^1.0.3 || ^2.0.0')
+        satisfiesJs('3.0.6', '^1.0.3 || ^2.0.0')
     }),
     b.cycle(),
     b.complete(),
